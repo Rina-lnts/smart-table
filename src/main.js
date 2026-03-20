@@ -17,9 +17,8 @@ const {data, ...indexes} = initData(sourceData);
 function collectState() {
     const state = processFormData(new FormData(sampleTable.container));
 
-    // Приводим числа к нужному типу
-    const rowsPerPage = parseInt(state.rowsPerPage);
-    const page = parseInt(state.page ?? 1);
+    const rowsPerPage = parseInt(state.rowsPerPage) || 10;  // ← добавили || 10
+    const page = parseInt(state.page ?? 1) || 1;             // ← добавили || 1
 
     return {
         ...state,
