@@ -29,7 +29,16 @@ export function initFiltering(elements, indexes) {
             }
         }
 
+        // Преобразуем totalFrom и totalTo в диапазон для поля total
+        const totalFrom = parseFloat(state.totalFrom) || null;
+        const totalTo = parseFloat(state.totalTo) || null;
+
+        const modifiedState = {
+            ...state,
+            total: [totalFrom, totalTo]
+        };
+
         // #4.5 — фильтруем данные
-        return data.filter(row => compare(row, state));
+        return data.filter(row => compare(row, modifiedState));
     }
 }
