@@ -31,13 +31,10 @@ function render(action) {
     let state = collectState();
     let result = [...data];
 
-    // @todo: использование
     result = applySearching(result, state, action);
     result = applyFiltering(result, state, action);
     result = applySorting(result, state, action);
     result = applyPagination(result, state, action);
-    result = applySorting(result, state, action);
-    result = applyPagination(result, state, action); 
 
     sampleTable.render(result);
 }

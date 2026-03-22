@@ -12,6 +12,7 @@ export const initPagination = ({pages, fromRow, toRow, totalRows}, createPage) =
     const rowsPerPage = state.rowsPerPage || 10;
     const pageCount = Math.ceil(data.length / rowsPerPage);
     let page = state.page || 1;
+    console.log('data.length:', data.length, 'rowsPerPage:', rowsPerPage, 'pageCount:', pageCount);
 
         // #2.6 — обрабатываем кнопки "вперёд/назад/первая/последняя"
         if (action) switch(action.name) {
