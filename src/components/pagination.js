@@ -18,7 +18,7 @@ export const initPagination = ({pages, fromRow, toRow, totalRows}, createPage) =
         }
 
         return Object.assign({}, query, { limit, page });
-    }
+}
 
     const updatePagination = (total, { page, limit }) => {
         pageCount = Math.ceil(total / limit);
