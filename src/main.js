@@ -9,7 +9,7 @@ import {initSorting} from "./components/sorting.js";
 import {initFiltering} from "./components/filtering.js";
 import {initSearching} from "./components/searching.js";
 
-const api = initData();
+const api = initData(sourceData);
 
 function collectState() {
     const state = processFormData(new FormData(sampleTable.container));
