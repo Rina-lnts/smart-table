@@ -32,19 +32,17 @@ export function initTable(settings, onAction) {
    const render = (data) => {
         const nextRows = data.map(item => {
             const row = cloneTemplate(rowTemplate);
-            row.container.setAttribute('data-name', 'row'); 
+            row.container.setAttribute('data-name', 'row');
 
             Object.keys(item).forEach(key => {
                 if (row.elements[key]) {
                     row.elements[key].textContent = item[key];
                 }
             });
-
             return row.container;
         });
-
         root.elements.rows.replaceChildren(...nextRows);
     }
-    
-    return { ...root, render }; 
+
+    return { ...root, render };
 }

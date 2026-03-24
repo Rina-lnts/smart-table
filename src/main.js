@@ -49,6 +49,7 @@ const {applyPagination, updatePagination} = initPagination(
         const input = el.querySelector('input');
         const label = el.querySelector('span');
         el.setAttribute('data-name', 'page');
+
         input.value = page;
         input.checked = isCurrent;
         label.textContent = page;
@@ -69,7 +70,14 @@ const appRoot = document.querySelector('#app');
 appRoot.appendChild(sampleTable.container);
 
 async function startApp() {
-    await init();
+    try {
+        const indexes = await api.getIndexes();
+        if (indexes && typeof indexes === 'object') {
+            updateIndexes(indexes);
+        }
+    } catch (e) {
+        console.warn("Не удалось загрузить индексы, но продолжаем отрисовку...");
+    }
     await render();
 }
 
