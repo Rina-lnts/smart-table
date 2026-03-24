@@ -32,6 +32,8 @@ async function render(action) {
 
     updatePagination(total, query);
     sampleTable.render(items);
+    
+    document.dispatchEvent(new CustomEvent('render-complete'));
 }
 
 const sampleTable = initTable({

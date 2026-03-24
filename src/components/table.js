@@ -30,21 +30,20 @@ export function initTable(settings, onAction) {
     });
 
     const render = (data) => {
-        // @todo: #1.1 — преобразовать данные в массив строк
-        const nextRows = data.map(item => {
-            const row = cloneTemplate(rowTemplate);
+    const nextRows = data.map(item => {
+        const row = cloneTemplate(rowTemplate);
 
-            Object.keys(item).forEach(key => {
-                if (row.elements[key]) {
-                    row.elements[key].textContent = item[key];
-                }
-            });
-
-            return row.container;
+        Object.keys(item).forEach(key => {
+            if (row.elements[key]) {
+                row.elements[key].textContent = item[key];
+            }
         });
 
+        return row.container;
+    });
+
         root.elements.rows.replaceChildren(...nextRows);
-    }
+}
 
     return { ...root, render };
 }
