@@ -32,7 +32,7 @@ async function render(action) {
 
     updatePagination(total, query);
     sampleTable.render(items);
-    
+
     document.dispatchEvent(new CustomEvent('render-complete'));
 }
 
@@ -48,6 +48,7 @@ const {applyPagination, updatePagination} = initPagination(
     (el, page, isCurrent) => {
         const input = el.querySelector('input');
         const label = el.querySelector('span');
+        el.setAttribute('data-name', 'page');
         input.value = page;
         input.checked = isCurrent;
         label.textContent = page;
