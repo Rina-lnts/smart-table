@@ -72,4 +72,7 @@ async function init() {
 const appRoot = document.querySelector('#app');
 appRoot.appendChild(sampleTable.container);
 
-init().then(render);
+init().then(() => render()).catch(err => {
+    console.error(err);
+    render();
+});
