@@ -62,6 +62,9 @@ const applySorting = initSorting([
 
 const {applyFiltering, updateIndexes} = initFiltering(sampleTable.filter.elements);
 
+const appRoot = document.querySelector('#app');
+appRoot.appendChild(sampleTable.container);
+
 async function init() {
     const indexes = await api.getIndexes();
     updateIndexes(sampleTable.filter.elements, {
@@ -69,10 +72,4 @@ async function init() {
     });
 }
 
-const appRoot = document.querySelector('#app');
-appRoot.appendChild(sampleTable.container);
-
-init().then(() => render()).catch(err => {
-    console.error(err);
-    render();
-});
+render().then(() => init());
