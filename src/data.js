@@ -14,8 +14,8 @@ export function initData() {
         total: item.total_amount
     }));
 
-    let sellers;
-    let customers;
+    let sellers = localSellers;
+    let customers = localCustomers;
     let lastResult;
     let lastQuery;
 
@@ -28,16 +28,14 @@ export function initData() {
     }));
 
     const getIndexes = async () => {
-        if (!sellers || !customers) {
-            try {
-                [sellers, customers] = await Promise.all([
-                    fetch(`${BASE_URL}/sellers`).then(res => res.json()),
-                    fetch(`${BASE_URL}/customers`).then(res => res.json()),
-                ]);
-            } catch {
-                sellers = localSellers;
-                customers = localCustomers;
-            }
+        try {
+            [sellers, customers] = await Promise.all([
+                fetch(`${BASE_URL}/sellers`).then(res => res.json()),
+                fetch(`${BASE_URL}/customers`).then(res => res.json()),
+            ]);
+        } catch {
+            sellers = localSellers;
+            customers = localCustomers;
         }
         return { sellers, customers };
     }
