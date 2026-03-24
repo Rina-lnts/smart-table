@@ -65,11 +65,9 @@ const {applyFiltering, updateIndexes} = initFiltering(sampleTable.filter.element
 const appRoot = document.querySelector('#app');
 appRoot.appendChild(sampleTable.container);
 
-async function init() {
-    const indexes = await api.getIndexes();
-    updateIndexes(sampleTable.filter.elements, {
-        searchBySeller: indexes.sellers
-    });
+async function startApp() {
+    await init();   // Сначала получаем продавцов и покупателей
+    await render(); // Затем отрисовываем таблицу
 }
 
-render().then(() => init());
+startApp();
