@@ -66,8 +66,8 @@ const appRoot = document.querySelector('#app');
 appRoot.appendChild(sampleTable.container);
 
 async function startApp() {
-    await init();   // Сначала получаем продавцов и покупателей
-    await render(); // Затем отрисовываем таблицу
+    await init();
+    await render();
 }
 
 startApp();
